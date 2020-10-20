@@ -21,3 +21,48 @@
 “ед”: [“шт.”]
 }
 """
+
+dict_stock_analysis = {
+    "Название": set({}),
+    "Цена": set({}),
+    "Кол-во": set({}),
+    "Ед.": set({})
+}
+
+idx = 1
+stock_list = []
+stock_enum_list = []
+while True:
+    stock_name = input("Введите название товара: ")
+    stock_price = float(input("Введите цену товара: "))
+    stock_qty = int(input("Введите количество: "))
+    stock_uom = input("Введите единицы измерения: ")
+    stock_list.append((idx, {
+        "Название": stock_name,
+        "Цена": stock_price,
+        "Кол-во": stock_qty,
+        "Ед.": stock_uom
+    }))
+    choice = input("Прервать ввод? (Y): ")
+    if choice == "Y":
+        break
+    else:
+        idx += 1
+
+print("Введены данные:\n", stock_list)
+
+name_set = set({})
+price_set = set({})
+qty_set = set({})
+uom_set = set({})
+
+iterator = 0
+while iterator < idx:
+    stock_item = stock_list[iterator][1]
+    dict_stock_analysis["Название"].add(stock_item["Название"])
+    dict_stock_analysis["Цена"].add(stock_item["Цена"])
+    dict_stock_analysis["Кол-во"].add(stock_item["Кол-во"])
+    dict_stock_analysis["Ед."].add(stock_item["Ед."])
+    iterator +=1
+
+print("Аналитика:\n", dict_stock_analysis)

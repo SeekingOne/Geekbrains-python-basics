@@ -4,3 +4,11 @@
 только первые 10 букв в слове.
 """
 
+base_str = input("Введите несколько слов через пробел: ")
+
+words_list = base_str.split()
+print(words_list)
+
+for idx, element in enumerate(words_list):
+    print(idx, element[0:10])
+
